@@ -40,4 +40,4 @@ to make a new daily entry:
 - test
   - container for test classes
     - pip3 install nose
-    - from package root> nosetest -v
+    - from package root> nosetests -v
