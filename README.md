@@ -22,7 +22,12 @@ to make a new daily entry:
 - input\_client.py
   - TKinter popup window input client
 - make\_db.py
-  calls init\_data methods to create a shelf database with sample data
+  - calls init\_data methods to create a shelf database with sample data
+  - to build a db from sample data:
+    1. (from tarot-tracker root)$> rm data tarot\_dailies\*
+      - this removes both test and prod dbs
+    1. (from python REPL or script) import app.make\_db as mdb
+    1. mdb.dump\_db() or mdb.dump\_test\_db()
 - models
   - card: data model for a tarot card
   - daily\_tt: data model for a daily tarot card pull

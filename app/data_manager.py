@@ -19,8 +19,11 @@ class DataManager:
         return self.__get_db
 
     def get_cache(self, shelve_target=db_config.DB_SHELF):
-        # shelve_target lets you change default db: dev, stage, prod, test; for instance
+        # shelve_target lets you change default db: dev, stage, prod, test; for instance   
+
         if self.__get_db is True:
+            # first blow out old data
+            self.__cache = None
             cache_db = {}
             with shelve.open(shelve_target) as db:
                 for key in db:
@@ -37,11 +40,10 @@ class DataManager:
         data_mule.update_shelf_member(shelve_target, id, member)
         self.__get_db = True
 
-    def write_db(self, db_data, db_target, is_append_existing=True):
-        if is_append_existing is True:
-            data_mule.to_shelf(db_data, db_target)
-            self.__get_db = True
-
+    def write_db(self, db_data, db_target, obliterate=False):
+        data_mule.to_shelf(db_data, db_target, obliterate=obliterate)
+        self.__get_db = True
+            
 #end class
 
 def run_tests():

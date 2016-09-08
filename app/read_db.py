@@ -1,6 +1,6 @@
 __author__ = 'brighamhausman'
 import shelve
-import db_config
+import app.db_config
 import pprint
 import sys,argparse
 

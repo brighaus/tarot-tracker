@@ -1,5 +1,6 @@
 import pickle
 import shelve
+import os
 
 """ pickle_mule.py helper module for reading and writing pickled files.
 functions:
@@ -60,9 +61,14 @@ def from_file(handle):
     return fetch_dict(handle)
 
 """this function expects k/v data"""
-def to_shelf(data, handle):
+def to_shelf(data, handle, obliterate=False):
     try:
+        # wipe out the existing db 
+        if obliterate:
+            os.remove(handle)
+            
         with shelve.open(handle) as db:
+
             for k in data:
                 db[k] = data[k]
     except Exception as e:

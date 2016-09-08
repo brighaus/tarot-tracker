@@ -13,7 +13,7 @@ Accesses the datamanager to make CRUD manipulations on the db.
 #You can append other imports after this.
 import sys,argparse
 import uuid, pprint
-import db_config
+import app.db_config as db_cfg
 from data_manager import DataManager
 from input_client import Inputclient
 
@@ -23,7 +23,7 @@ class DBUtil:
 
     __data_manager = DataManager()
     __db_cache = None
-    __db_target = db_config.DB_SHELF
+    __db_target = db_cfg.DB_SHELF
 
     def refresh_cache(self):
         self.__db_cache = self.__data_manager.get_cache(shelve_target=self.__db_target)
@@ -38,7 +38,7 @@ class DBUtil:
             self.refresh_cache()
         return self.__db_cache
 
-    def write_db(self, repo_data, repo_target, is_append_existing=True):
+    def write_db(self, repo_data, repo_target):
         #Danger!! dumps repo_data into the repo_target, will silently overwrite
         #   key matches by default
         self.__data_manager.write_db(repo_data, repo_target)
@@ -113,7 +113,7 @@ def test():
     dbu = DBUtil()
     result = []
     # get test db
-    dbu.set_db_target(db_config.DB_SHELF_TEST)
+    dbu.set_db_target(db_cfg.DB_SHELF_TEST)
     db = dbu.get_db()
     # get keys
     db_keys = list(db.keys())

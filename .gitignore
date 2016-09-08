@@ -1,3 +1,7 @@
+# project specific
+data/tarot_dailies_test
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
