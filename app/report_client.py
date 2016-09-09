@@ -327,7 +327,7 @@ def main():
 
     parser = argparse.ArgumentParser(description='Builds svg, html and pdf reports')
     parser.add_argument('-r', '--report', help='get a report',
-                        action='store')
+                        nargs='?', const='tarot-report')
     parser.add_argument('-t', '--type', help='set report type',
                         action='store')
     parser.add_argument('-f', '--format', help='set format of output, defaults to pdf')

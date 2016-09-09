@@ -1,6 +1,7 @@
 # project specific
 data/tarot_dailies_test
-
+*html
+*svg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
